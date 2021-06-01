@@ -19,7 +19,7 @@ const placeholderData = [
 ]
 
 const Home = () => {
-    return <GroupList groups={placeholderData}></GroupList>
+    return <GroupList groups={placeholderData}></GroupList>;
 } 
 
 export default Home;

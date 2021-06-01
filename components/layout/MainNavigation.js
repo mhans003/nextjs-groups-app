@@ -1,4 +1,6 @@
 import classes from './MainNavigation.module.css';
+//Import Link component from Next JS.
+import Link from 'next/link';
 
 const MainNavigation = () => {
 
@@ -8,10 +10,10 @@ const MainNavigation = () => {
             <nav>
                 <ul>
                     <li>
-                        <Link to='/'>All Groups</Link>
+                        <Link href='/'>All Groups</Link>
                     </li>
                     <li>
-                        <Link to='/new-group'>Add New Group</Link>
+                        <Link href='/new-group'>Add New Group</Link>
                     </li>
                 </ul>
             </nav>
