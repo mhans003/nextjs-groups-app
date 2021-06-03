@@ -25,6 +25,7 @@ const Home = props => {
 //This code will only execute on the server-side, during the build process.
 //This takes the place of client-side retrieval of data and needing to use useEffect/useState to get groups data.
 //Instead, data is retrieved on server and sent to this component via props.
+//Alternative is to use getServerSideProps, which doesn't run on build, but always on server after deployment.
 export async function getStaticProps() {
     //Fetch data.
 
@@ -32,7 +33,11 @@ export async function getStaticProps() {
     return {
         props: {
             groups: placeholderData
-        }
+        },
+        //Revalidate property utilizes incremental static generation.
+        //Takes the number of seconds to wait before generating another request.
+        //This means the page will not only be generated at build, but regenerated at the server every x seconds.
+        revalidate: 10
     };
 }
 
