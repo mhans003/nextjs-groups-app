@@ -3,13 +3,14 @@
 
 import { MongoClient } from 'mongodb';
 
-const handler = (req, res) => {
+const handler = async (req, res) => {
     //Create new group.
     if (req.method === 'POST') {
         //Pull out request body.
         const data = req.body;
         //Connect to DB and create client object.
-        const client = MongoClient.connect(process.env.DB_CONNECTION);
+        console.log(process.env.DB_CONNECTION)
+        const client = await MongoClient.connect(process.env.DB_CONNECTION);
         const db = client.db();
         //Identify collection.
         const groupsCollection = db.collection('groups');
