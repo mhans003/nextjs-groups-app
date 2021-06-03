@@ -1,5 +1,4 @@
 import GroupList from '../components/groups/GroupList';
-
 //Temporary placeholder data to pass into the GroupsList component to render.
 const placeholderData = [
     {
@@ -18,8 +17,23 @@ const placeholderData = [
     }
 ]
 
-const Home = () => {
-    return <GroupList groups={placeholderData}></GroupList>;
+//Props come from pre-rendering process on the server.
+const Home = props => {
+    return <GroupList groups={props.groups}></GroupList>;
 } 
+
+//This code will only execute on the server-side, during the build process.
+//This takes the place of client-side retrieval of data and needing to use useEffect/useState to get groups data.
+//Instead, data is retrieved on server and sent to this component via props.
+export async function getStaticProps() {
+    //Fetch data.
+
+    //For now, just use the placeholder data.
+    return {
+        props: {
+            groups: placeholderData
+        }
+    };
+}
 
 export default Home;
