@@ -1,33 +1,36 @@
+import { MongoClient, ObjectId } from 'mongodb';
+
 import GroupDetail from '../components/groups/GroupDetail';
 
-const Group = () => {
+const Group = props => {
     return (
         <GroupDetail
-            image="https://images.unsplash.com/photo-1593642634402-b0eb5e2eebc9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80"
-            title="Group 1"
-            address="placeholder address"
-            description="placeholder description"
+            image={props.groupData.image}
+            title={props.groupData.title}
+            address={props.groupData.address}
+            description={props.groupData.description}
         />
     );
 };
 
 //Needed to use getStaticProps so that we can pre-generate all possible paths (all dynamic values).
 export async function getStaticPaths() {
+    //Connect to MongoDB
+    const client = await MongoClient.connect(process.env.DB_CONNECTION);
+    const db = client.db();
+    //Identify collection.
+    const groupsCollection = db.collection('groups');
+    //Fetch all group IDs from the DB.
+    const groups = await groupsCollection.find({}, { _id: 1 }).toArray();
+    //Close connnection.
+    client.close();
     return {
-        //Fallback property set to false since we are hard-coding all possible paths for now.
+        //
         fallback: false,
-        paths: [
-            {
-                params: {
-                    groupId: 'g1'
-                }
-            },
-            {
-                params: {
-                    groupId: 'g2'
-                }
-            }
-        ]
+        //Get all paths for all possible IDs, using the IDs retrieved.
+        paths: groups.map(group => ({ 
+            params: { groupId: group._id.toString() }
+        }))
     }
 }
 
@@ -35,15 +38,26 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
     //Get single group using ID.
     const groupId = context.params.groupId;
+    //Connect to MongoDB
+    const client = await MongoClient.connect(process.env.DB_CONNECTION);
+    const db = client.db();
+    //Identify collection.
+    const groupsCollection = db.collection('groups');
+    //Using this ID, get the desired group (we need to convert the ID back from a string to a Mongo object id).
+    const thisGroup = await groupsCollection.findOne({_id: ObjectId(groupId)});
+    //Close connection.
+    client.close();
 
-    //For now, use fixed data.
+    //Return data retrieved as props (make sure to convert ID back to string).
     return {
         props: {
-            id: groupId,
-            image: "https://images.unsplash.com/photo-1593642634402-b0eb5e2eebc9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80",
-            title: "Group 1",
-            address: "placeholder address",
-            description: "placeholder description"
+            groupData: {
+                id: thisGroup._id.toString(),
+                title: thisGroup.title,
+                address: thisGroup.address,
+                image: thisGroup.image,
+                description: thisGroup.description
+            }
         }
     }
 }
