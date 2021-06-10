@@ -1,15 +1,25 @@
 import { MongoClient, ObjectId } from 'mongodb';
-
+import { Fragment } from 'react';
+import Head from 'next/head';
 import GroupDetail from '../components/groups/GroupDetail';
 
 const Group = props => {
     return (
-        <GroupDetail
-            image={props.groupData.image}
-            title={props.groupData.title}
-            address={props.groupData.address}
-            description={props.groupData.description}
-        />
+        <Fragment>
+            <Head>
+                <title>{props.groupData.title}</title>
+                <meta
+                    name="description"
+                    content={props.groupData.description}
+                />
+            </Head>
+            <GroupDetail
+                image={props.groupData.image}
+                title={props.groupData.title}
+                address={props.groupData.address}
+                description={props.groupData.description}
+            />
+        </Fragment>
     );
 };
 

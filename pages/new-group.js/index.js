@@ -1,4 +1,6 @@
 import { useRouter } from 'next/router';
+import { Fragment } from 'react';
+import Head from 'next/head';
 import NewGroupForm from '../../components/groups/NewGroupForm';
 
 const NewGroup = () => {
@@ -20,7 +22,18 @@ const NewGroup = () => {
         router.push('/');
     };
 
-    return <NewGroupForm onAddGroup={handleOnAddGroup}></NewGroupForm>
+    return (
+        <Fragment>
+            <Head>
+                <title>Add New Group</title>
+                <meta
+                    name="description"
+                    content="Post new groups to inform new or returning members"
+                />
+            </Head>
+            <NewGroupForm onAddGroup={handleOnAddGroup}></NewGroupForm>
+        </Fragment>
+    );
 }
 
 export default NewGroup;

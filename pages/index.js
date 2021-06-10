@@ -1,9 +1,23 @@
+//Use Head for metadata.
+import Head from 'next/head';
+import { Fragment } from 'react';
 import { MongoClient } from 'mongodb';
 import GroupList from '../components/groups/GroupList';
 
 //Props come from pre-rendering process on the server.
 const Home = props => {
-    return <GroupList groups={props.groups}></GroupList>;
+    return (
+        <Fragment>
+            <Head>
+                <title>NextGroup</title>
+                <meta
+                    name="description"
+                    content="Post or find new groups to attend"
+                />
+            </Head>
+            <GroupList groups={props.groups}></GroupList>
+        </Fragment>
+    );
 } 
 
 //This code will only execute on the server-side, during the build process.
