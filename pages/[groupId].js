@@ -22,7 +22,7 @@ const Group = props => {
         </Fragment>
     );
 };
-
+  
 //Needed to use getStaticProps so that we can pre-generate all possible paths (all dynamic values).
 export async function getStaticPaths() {
     //Connect to MongoDB
