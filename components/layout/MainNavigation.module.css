@@ -1,6 +1,7 @@
 .navContainer {
     padding-top: 2rem;
     padding-bottom: 2rem;
+    background-color: rgba(22, 160, 133, 1.0);
 }
 
 .header {
@@ -15,8 +16,21 @@
 
 .logo {
     font-size: 2rem;
-    color: white;
     font-weight: bold;
+}
+
+.navigationItem, .navigationItem i {
+    font-size: 1.25rem;
+    margin-left: 1rem;
+}
+
+.navigationLink {
+    color: #fff !important;
+}
+
+.navigationLink a:hover,
+.navigationLink i:hover {
+    color: rgb(160, 209, 199) !important;
 }
 
 .header ul {
