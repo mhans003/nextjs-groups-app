@@ -72,4 +72,4 @@ export async function getStaticProps(context) {
     }
 }
 
-export default Group;
+export default Group; 
