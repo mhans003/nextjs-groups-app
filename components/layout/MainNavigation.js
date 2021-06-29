@@ -17,7 +17,7 @@ const MainNavigation = () => {
                     <i className="fas fa-chevron-down" style={{ color: "#fff"}}></i>
                 </Navbar.Toggle>
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="justify-content-end" style={{ width: "100%"}}>
+                    <Nav className="justify-content-md-end" style={{ width: "100%"}}>
                         <NavItem>
                             <NavLink className={[classes.navigationItem, classes.navigationLink]}>
                                 <Link href='/'>All Groups</Link>
