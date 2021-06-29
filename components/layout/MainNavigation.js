@@ -17,7 +17,9 @@ const MainNavigation = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="justify-content-end" style={{ width: "100%"}}>
                         <NavItem>
-                            <NavLink className={[classes.navigationItem, classes.navigationLink]}><Link href='/'>All Groups</Link></NavLink>
+                            <NavLink className={[classes.navigationItem, classes.navigationLink]}>
+                                <Link href='/'>All Groups</Link>
+                            </NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink className={[classes.navigationItem, classes.navigationLink]} title="Add New Group"><Link href='/new-group'><i className="fal fa-plus-circle" style={{ fontSize: "2rem" }}></i></Link></NavLink>

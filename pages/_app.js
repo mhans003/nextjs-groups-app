@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/globals.css'
+import '@fortawesome/fontawesome-pro/css/all.css';
 //Wrap content in Layout component (adjust width and margin).
 import Layout from '../components/layout/Layout';
 

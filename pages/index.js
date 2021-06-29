@@ -14,7 +14,6 @@ const Home = props => {
                     name="description"
                     content="Post or find new groups to attend"
                 />
-                <script src="https://kit.fontawesome.com/f10d4c591f.js" crossorigin="anonymous"></script>
             </Head>
             <GroupList groups={props.groups}></GroupList>
         </Fragment>
