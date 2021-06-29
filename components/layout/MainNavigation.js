@@ -13,7 +13,9 @@ const MainNavigation = () => {
         <Navbar expand="md" className={classes.navContainer}>
             <Container>
                 <Navbar.Brand className={[classes.logo, classes.navigationLink]}><Link href='/'>NextGroup</Link></Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Toggle aria-controls="basic-navbar-nav" style={{ border: "none" }}>
+                    <i className="fas fa-chevron-down" style={{ color: "#fff"}}></i>
+                </Navbar.Toggle>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="justify-content-end" style={{ width: "100%"}}>
                         <NavItem>
@@ -22,7 +24,11 @@ const MainNavigation = () => {
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className={[classes.navigationItem, classes.navigationLink]} title="Add New Group"><Link href='/new-group'><i className="fal fa-plus-circle" style={{ fontSize: "2rem" }}></i></Link></NavLink>
+                            <NavLink className={[classes.navigationItem, classes.navigationLink]} title="Add New Group">
+                                <Link href='/new-group'>
+                                    <i className="fal fa-plus-circle" style={{ fontSize: "2rem" }}></i>
+                                </Link>
+                            </NavLink>
                         </NavItem>
                     </Nav>
                 </Navbar.Collapse>
