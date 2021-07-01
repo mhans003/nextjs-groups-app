@@ -33,7 +33,7 @@ const NewGroupForm = props => {
             <form className={classes.form} onSubmit={submitHandler}>
                 <div className={classes.control}>
                     <label htmlFor='title'>Group Title</label>
-                    <input type='text' required id='title' ref={titleInputRef} />
+                    <input type='text' required id='title' maxLength='50' ref={titleInputRef} />
                 </div>
                 <div className={classes.control}>
                     <label htmlFor='image'>Group Image</label>
@@ -41,7 +41,7 @@ const NewGroupForm = props => {
                 </div>
                 <div className={classes.control}>
                     <label htmlFor='address'>Address</label>
-                    <input type='text' required id='address' ref={addressInputRef} />
+                    <input type='text' required id='address' maxLength='100' ref={addressInputRef} />
                 </div>
                 <div className={classes.control}>
                     <label htmlFor='description'>Description</label>
@@ -49,6 +49,7 @@ const NewGroupForm = props => {
                         id='description'
                         required
                         rows='5'
+                        maxLength='5000'
                         ref={descriptionInputRef}
                     ></textarea>
                 </div>
@@ -61,3 +62,4 @@ const NewGroupForm = props => {
 }
 
 export default NewGroupForm;
+
