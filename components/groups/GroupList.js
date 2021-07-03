@@ -8,7 +8,7 @@ const GroupList = props => {
             <Container>
                 <Row>
                     {props.groups.map(group => (
-                        <Col md="6">
+                        <Col md="6" xl="4">
                             <GroupItem
                                 key={group.id}
                                 id={group.id}
